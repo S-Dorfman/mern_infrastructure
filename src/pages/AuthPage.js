@@ -1,8 +1,12 @@
-
+import SignUpForm from "../components/SignUpForm"
 
 function AuthPage() {
   return (
-    <h1>Auth Page</h1>
+    <div>
+      <h1>Auth Page</h1>
+      
+    <SignUpForm />
+    </div>
   )
 }
 
