@@ -1,8 +1,11 @@
+//require dotenv
+require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const favicon = require('serve-favicon');
 //logger middleware
 const logger = require('morgan');
+
 
 const app = express();
 // Configure to use port 3001 instead of 3000 during
