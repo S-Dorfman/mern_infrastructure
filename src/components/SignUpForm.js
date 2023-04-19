@@ -10,11 +10,19 @@ function SignUpForm() {
         error: ''
     })
 
+    //check password and confirm match
     const disable = formData.password !== formData.confirm;
     
-    const handleSubmit = () => {}
+    const handleSubmit = (e) => { 
+        //to prevent refresh and lose data
+        e.preventDefault();
+        console.log(formData) }
 
-    const handleChange = () => {}
+    const handleChange = (evt) => {
+        // ...formData(spread operater to keep all form values available otherwise only current one will be)
+        // evt.target.name = form name, evt.target.value = form value
+        setFormData({...formData, [evt.target.name]: evt.target.value, error: ''})
+    };
 
     return (
      <div>
