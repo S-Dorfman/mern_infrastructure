@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { signUp } from "../utilities/users-service";
 
 function SignUpForm() {
     //initialize state with form data
@@ -13,10 +14,26 @@ function SignUpForm() {
     //check password and confirm match
     const disable = formData.password !== formData.confirm;
     
-    const handleSubmit = (e) => { 
-        //to prevent refresh and lose data
+    const handleSubmit = async (e) => { 
+        // Prevent form from being submitted to the server - prevent refresh and lose data
         e.preventDefault();
-        console.log(formData) }
+
+        try {
+            console.log(formData);
+                //save user data to send to backend - to create new user
+            const userData = {
+                name: formData.name,
+                email: formData.email,
+                password: formData.password
+              }
+
+              //returns a token with the user info
+              const user = await signUp(userData);
+
+            } catch (error) {
+            setFormData({...formData, error: "Sign Up Failed - Try Again"})
+        }
+        };
 
     const handleChange = (evt) => {
         // ...formData(spread operater to keep all form values available otherwise only current one will be)
