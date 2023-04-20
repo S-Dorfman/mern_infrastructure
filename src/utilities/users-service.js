@@ -12,6 +12,10 @@ export async function signUp(userData) {
     // which will ultimately return a JSON Web Token (JWT)
     // console.log('[From SignUP function]', userData);
     const token = await usersApi.signUp(userData);
+    
+    //save token to local Storage
+    localStorage.setItem('SEI token', token);
+
     return token;
 }
 

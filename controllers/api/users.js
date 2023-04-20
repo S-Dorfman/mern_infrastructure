@@ -4,6 +4,11 @@
 const User = require('../../models/user')
 const jwt = require('jsonwebtoken')
 
+//* --- Helper function ---
+function createJWT(user) {
+    return jwt.sign({user}, process.env.SECRET, {expiresIn: '24h'})       
+}
+
 async function create(req, res) {
     // console.log('[from Post handler]', req.body);
     // Try Catch: If we get a good request we will go within TRY and create a user, 
@@ -14,17 +19,16 @@ async function create(req, res) {
         console.log(user);
 
         //* creating a new jwt
-        jwt.sign({user}, process.env.SECRET, {expiresIn: '24h'})
-
+        const token = createJWT(user);
+        
+        // we can use res.json to send back just a string
+        res.json(token);
 
     } catch (error) {
         console.log(error);
         res.status(400).json(error)
     }
 }
-
-
-
 
 module.exports = {
     create
