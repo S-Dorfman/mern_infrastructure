@@ -2,7 +2,7 @@
 
 //*SignUpForm.jsx <--> users-service.js <--> users-api.js <-Internet-> server.js (Express)
 
-//* 
+//* handleSubmit <--> [signUp]-users-service <--> [signUp]-users-api <-Internet-> server.js (Express)
 
 
 

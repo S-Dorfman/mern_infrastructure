@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { signUp } from "../utilities/users-service";
 
-function SignUpForm() {
+function SignUpForm({setUser}) {
     //initialize state with form data
     const [formData, setFormData] = useState({
         name: '',
@@ -28,7 +28,8 @@ function SignUpForm() {
               }
 
               //returns a token with the user info
-              const user = await signUp(userData);
+              const user = await signUp(userData);  
+              setUser(user);
 
             } catch (error) {
             setFormData({...formData, error: "Sign Up Failed - Try Again"})
