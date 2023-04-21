@@ -5,19 +5,23 @@
 //* handleSubmit <--> [signUp]-users-service <--> [signUp]-users-api <-Internet-> server.js (Express)
 
 
-
+//? SignUp POST function
 export async function signUp(userData) {
     const BASE_URL = '/api/users';
 
     const res = await fetch(BASE_URL, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(userData) // makes the JS object to a string to be send over the internet
+        // makes the JS object to a string to be send over the internet
+        body: JSON.stringify(userData) 
     });
 
     if (res.ok) {
-        return res.json(); // JWT Token
+        // JWT Token
+        return res.json(); 
     } else {
         throw new Error('Invalid Sign Up!')
     }
 }
+
+//? Login Function

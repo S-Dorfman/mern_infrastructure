@@ -4,6 +4,7 @@
 
 //* handleSubmit <--> [signUp]-users-service <--> [signUp]-users-api <-Internet-> server.js (Express)
 
+
 import * as usersApi from './users-api';
 
 //* Get Token
@@ -11,7 +12,7 @@ export function getToken() {
     // getItem returns null if there's no string
     const token = localStorage.getItem('token')
     //if theres no token
-    if (!token)  return null
+    if (!token) return null
     // Obtain the payload of the token
     const payload = JSON.parse(atob(token.split('.')[1]))
     console.log(payload);
@@ -53,8 +54,10 @@ export function logOut() {
 
 }
 
+//*Log in 
 export async function login() {
-    
+
+    //? localStorage.getItem('token', token)
 }
 
 
