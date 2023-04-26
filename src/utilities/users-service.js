@@ -44,7 +44,6 @@ export async function signUp(userData) {
 
     //save token to local Storage
     localStorage.setItem('token', token);
-
     return getUser();
 }
 
@@ -55,10 +54,19 @@ export function logOut() {
 }
 
 //*Log in 
-export async function login() {
+export async function login(credentials) {
+    const token = await usersApi.login(credentials)
 
-    //? localStorage.getItem('token', token)
+    //save token to local Storage
+    localStorage.setItem('token', token);
+    return getUser();
 }
+
+export async function checkToken() {
+    return usersApi.checkToken().then(dateStr => new Date(dateStr))
+}
+
+
 
 
 

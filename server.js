@@ -25,6 +25,8 @@ app.use(express.json());
 // to serve from the production 'build' folder
 app.use(favicon(path.join(__dirname, 'build', 'favicon.ico')));
 app.use(express.static(path.join(__dirname, 'build')));
+// checks if token was sent and sets a user data on the req (req.user)
+app.use(require('./config/checkToken'));
 
 // * ALl API routes (from separate routes page) 
 app.use('/api/users', require('./routes/api/users'));
